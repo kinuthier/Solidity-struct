@@ -1,0 +1,32 @@
+# Solidity-struct
+
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity ^0.8.9;
+
+contract Structs {
+    struct Car {
+        string year;
+        uint model;
+        address owner;
+    }
+    Car public car;
+    Car[] public cars;
+    mapping(address => Car[]) public carsbyOwner;
+
+    function examples() external {
+        Car memory AstonMartin = Car("AstonMartin", 2021, msg.sender);
+        Car memory Bentley = Car({year:2019, model:"Bentley" , owner: msg.sender});
+        Car memory Tesla;
+        Tesla.model = "Tesla";
+        Tesla.year = 2020;
+        Tesla.owner = msg.sender;
+
+        cars.push (AstonMartin);
+        cars.push (Bentley);
+        cars.push (Tesla);
+
+        cars.push(Car("Ferrari", 2020, msg.sender ));
+
+
+    }
+}
